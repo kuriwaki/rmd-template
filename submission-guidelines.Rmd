@@ -1,0 +1,56 @@
+---
+title: "Guidelines for Rmarkdown Documents in API-209/210 Submissions"
+date: "`r format(Sys.time(), '%B %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    template: ps_style.sty
+    keep_tex: FALSE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, 
+                      fig.width = 6, fig.height = 4, fig.align = "center")
+```
+
+## Output Format {-}
+
+Output should be a PDF with the following regular formats:
+
+- 11 or 12pt font
+- reasonable margins (1 to 1.25 inches)
+- a common font like Helvetica (this document), Times, or Computer Modern (Rmarkdown's default)
+
+## Suppress code and warnings {-}
+
+Because the point of most memos in a policy setting is not to show code, do not show the code that produces your output, unless to make a specific comment on the code. (This involves using the \code{echo = FALSE} to your code chunk as a default). To show your work, you'll be asked to submit your .Rmd file. 
+
+
+Similarly, suppress output messages when loading packages (This can be done, for example, by using the \code{include = FALSE} option), and suppress warning or output messages for your code (this can be done, for example with the \code{warnings = FALSE`} option)
+
+
+
+## Leveraging In-line R-code {-}
+
+To avoid hard-coding answers, you are encouraged to write in-line R code in-text. For example, after assigning the number of rows of a dataset to an object, 
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+data(gss_cat)
+n_gss <- nrow(gss_cat)
+```
+
+We can write in Rmarkdown 
+\begin{quote}
+\code{There are \textasciigrave r n\_gss\textasciigrave ~ observations in the GSS dataset.}
+\end{quote}
+which will produce the rendered text:
+
+
+> There are `r format(n_gss, big.mark = ",")` observations in the GSS dataset.
+
+
+## Use Section headers {-}
+
+Label sections with headers using the \code{\#} symbol. 
+
