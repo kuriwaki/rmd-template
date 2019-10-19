@@ -4,7 +4,7 @@ date: "`r format(Sys.time(), '%B %Y')`"
 output:
   pdf_document:
     latex_engine: xelatex
-    template: ps_style.sty
+    template: memo_style.sty
     keep_tex: FALSE
 ---
 
@@ -20,6 +20,7 @@ Output should be a PDF with the following regular formats:
 - 11 or 12pt font
 - reasonable margins (1 to 1.25 inches)
 - a common font like Helvetica (this document), Times, or Computer Modern (Rmarkdown's default)
+- A clear title which indicates your name, date, and problem set number
 
 ## Suppress code and warnings {-}
 
@@ -54,3 +55,19 @@ which will produce the rendered text:
 
 Label sections with headers using the \code{\#} symbol. 
 
+
+## Templates {-}
+
+Pre-made templates are useful for creating standardized documents. When using a PDF, you can provide a `.sty` file (written in TeX) in the same directoy as your `.Rmd` file and call it in the YAML header of your `.Rmd`, as in 
+
+```{yaml, eval = FALSE}
+---
+title: "Guidelines for Rmarkdown Documents in API-209/210 Submissions"
+date: "`r format(Sys.time(), '%B %Y')`"
+output:
+  pdf_document:
+    template: pset_style.sty
+---
+```
+
+where `ps_style.sty` is the style file. A style file you are welcome to use is uploaded [at this link](https://github.com/kuriwaki/rmd-template/blob/master/pset_style.sty) -- click "Raw" to copy the contents of this file.
