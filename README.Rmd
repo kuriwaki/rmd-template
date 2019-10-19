@@ -1,0 +1,20 @@
+---
+output:
+  github_document:
+    html_preview: false
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# Rmarkdown and Guidelines Templates
+
+* Download the [guidelines](submission-guidelines.pdf) for formatting your Rmarkdown document for submission. Its source is [here](submission-guidelines.Rmd)
+* Download an optional [style file](pset_style.sty) for PDFs.
