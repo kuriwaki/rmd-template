@@ -1,10 +1,9 @@
 ---
-title: "Guidelines for Rmarkdown Documents in API-209/210 Submissions"
-date: "`r format(Sys.time(), '%B %Y')`"
-output:
-  pdf_document:
-    latex_engine: xelatex
-    template: pset.sty
+title: "Guidlines for R Markdown Documents in API-209/210 Submissions"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+    word_document:
+        reference_docx: template.docx
 ---
 
 ```{r setup, include=FALSE}
@@ -12,22 +11,28 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE,
                       fig.width = 6, fig.height = 4, fig.align = "center")
 ```
 
+R Markdown is a poweful tool for data analysis and presentation. A modal R Markdown document combines three different languages: R, Markdown, and TeX (and implicitly a fourth, called Pandoc), so we advise using R Markdown once you are comfortable in at least one of these formats. 
+
+The RStudio IDE makes it easy to create and compile R Markdown documents. You can start by `File` > `New File` > `R Markdown`, and choosing to output as PDF with the default options. [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) is also available for online. The teaching team will spend time making sure everyone can has a basic command of R Markdown, as we prepare for API-210. In API-209, the use of R Markdown is completely optional. 
+
+R Markdown documents can be customized, and because this is a problem set we ask you to follow the guidelines below. Otherwise, it will be hard for the teaching team to grade and compare a high volume of submissions in a timely manner. Please refer to these below and contact Shiro if you'd like any help or guidance. 
+
+
 ## Output Format {-}
 
-Output should be a PDF with the following regular formats:
+Problem Set submissions should be a PDF with the following basic features:
 
 - 11 or 12pt-sized font
-- reasonable margins (1 to 1.25 inches)
-- a common font like Helvetica (this document), Times, or Computer Modern (Rmarkdown's default)
-- A clear title which indicates your name, date, and problem set number
+- Reasonable margins (1 to 1.25 inches)
+- Use a common font like Helvetica, Times, or Computer Modern (Rmarkdown's default)
+- Include a clear title which indicates your name, date, and problem set number
 
 ## Suppress code and warnings {-}
 
-Because the point of most memos in a policy setting is not to show code, do not show the code that produces your output, unless to make a specific comment on the code. (This involves using the \code{echo = FALSE} to your code chunk as a default). To show your work, you'll be asked to submit your .Rmd file. 
+Because the point of most policy memos is not to show code, do _not_ show the code that produces your output, unless to make a specific comment on the code. This involves using the \code{echo = FALSE} to your code chunk as a default.^[To show your work, you'll be asked to submit your .Rmd file separately.] 
 
 
 Similarly, suppress output messages when loading packages (This can be done, for example, by using the \code{include = FALSE} option), and suppress warning or output messages for your code (this can be done, for example with the \code{warnings = FALSE`} option)
-
 
 
 ## Leveraging In-line R-code {-}
@@ -44,15 +49,22 @@ We can write in Rmarkdown
 \begin{quote}
 \code{There are \textasciigrave r n\_gss\textasciigrave ~ observations in the GSS dataset.}
 \end{quote}
-which will produce the rendered text:
+which will produce the  text:
 
+> There are `r n_gss` observations in the GSS dataset.
 
-> There are `r format(n_gss, big.mark = ",")` observations in the GSS dataset.
+Any line of R code can go in the back-ticks. As a simple extension, 
 
+\begin{quote}
+\code{There are \textasciigrave r format(n\_gss, big.mark = ",")\textasciigrave observations.}
+\end{quote}
+will produce the output produced by the R function:
+
+> There are `r format(n_gss, big.mark = ",")` observations.
 
 ## Use Section headers {-}
 
-Label sections with headers using the \code{\#} symbol. 
+Label sections with headers using the \code{\#} symbol. Another useful section delimiter in PDF is the paragraph header command, which you can use by, for example, `\paragraph{(1)}`
 
 
 ## Templates {-}
@@ -61,8 +73,9 @@ Pre-made templates are useful for creating standardized documents. When using a 
 
 ```{yaml, eval = FALSE}
 ---
-title: "Guidelines for Rmarkdown Documents in API-209/210 Submissions"
-date: "`r format(Sys.time(), '%B %Y')`"
+title: "Problem Set 10"
+author: "Shiro Kuriwaki"
+date: "`r format(Sys.time(), '%B %d %Y')`"
 output:
   pdf_document:
     template: pset.sty
